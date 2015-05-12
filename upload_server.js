@@ -131,6 +131,11 @@ UploadServer = {
     // make sure paths are correct
     fs.unlinkSync(path.join(options.uploadDir, filePath));
   },
+   deleteDir: function (dirName) { //clean out directories created when a document/whatever you are anchoring with is deleted
+
+    // make sure paths are correct
+    fs.rmdirSync(path.join(options.uploadDir, dirName));
+  },
   serve: function (req, res) {
     if (options.tmpDir == null || options.uploadDir == null) {
       throw new Meteor.Error('Upload component not initialised!');
